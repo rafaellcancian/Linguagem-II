@@ -1,0 +1,16 @@
+public static void metodo(Produto p)
+    {
+        String sql = "Query sql  - values (?, ?, ?)";
+        try
+        {
+            conector.conectar();
+            PreparedStatement pst = conector.getConn().prepareStatement(sql);
+            pst.setString(0, p.gtValor1());
+            pst.setString(1, p.getValor2());
+            pst.setFloat(2, p.getValor3());
+            conector.desconectar();
+        } catch (SQLException e)
+        {
+            Logger lgr = Logger.getLogger(Conector.class);
+            lgr.log(Level.SEVERE, e.getMessage(), e);
+        }
